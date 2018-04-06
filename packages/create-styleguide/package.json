@@ -1,0 +1,26 @@
+{
+  "name": "create-styleguide",
+  "version": "1.0.0",
+  "keywords": [
+    "styleguide"
+  ],
+  "description": "Creates styleguides with no build configuration.",
+  "license": "MIT",
+  "repository": "chlorophyllkid/create-styleguide",
+  "bugs": {
+    "url": "https://github.com/chlorophyllkid/create-styleguide/issues"
+  },
+  "engines": {
+    "node": ">=7.6"
+  },
+  "files": [
+    "index.js",
+    "createStyleguide.js"
+  ],
+  "bin": {
+    "create-styleguide": "./index.js"
+  },
+  "dependencies": {
+    "chalk": "^2.2.0"
+  }
+}
