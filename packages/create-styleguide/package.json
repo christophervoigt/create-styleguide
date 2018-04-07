@@ -6,6 +6,7 @@
   ],
   "description": "Creates styleguides with no build configuration.",
   "license": "MIT",
+  "author": "Christopher Voigt <chlorophyllkid@gmail.com>",
   "repository": "chlorophyllkid/create-styleguide",
   "bugs": {
     "url": "https://github.com/chlorophyllkid/create-styleguide/issues"
