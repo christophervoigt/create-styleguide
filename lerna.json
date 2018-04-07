@@ -3,5 +3,16 @@
   "packages": [
     "packages/*"
   ],
-  "version": "0.0.1"
+  "version": "independent",
+  "changelog": {
+    "repo": "chlorophyllkid/create-styleguide",
+    "labels": {
+      "tag: bug fix": "Bug Fix",
+      "tag: breaking change": ":Breaking Change",
+      "tag: new feature": "New Feature",
+      "tag: enhancement": "Enhancement",
+      "tag: documentation": "Documentation"
+    },
+    "cacheDir": ".changelog"
+  }
 }
