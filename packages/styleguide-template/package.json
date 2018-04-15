@@ -10,5 +10,8 @@
   },
   "files": [
     "template"
-  ]
+  ],
+  "dependencies": {
+    "chalk": "2.3.2"
+  }
 }
