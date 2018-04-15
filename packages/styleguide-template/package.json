@@ -9,7 +9,8 @@
     "url": "https://github.com/chlorophyllkid/create-styleguide/issues"
   },
   "files": [
-    "template"
+    "template",
+    "init.js"
   ],
   "dependencies": {
     "chalk": "2.3.2"
