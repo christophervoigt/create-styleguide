@@ -76,41 +76,52 @@ module.exports = function(appPath, appName, originalDirectory) {
   }
 
   const command = 'npm';
-  const args = ['install', '--save-exact'];
+  const args = [
+    'install',
+    '--verbose',
+    '--loglevel',
+    'error',
+  ];
 
   const dependenciesPath = path.join(appPath, 'dependencies.json');
 
   if (fs.existsSync(dependenciesPath)) {
     const dependencies = require(dependenciesPath).dependencies;
-    const devDependencies = require(dependenciesPath).devDependencies;
-    
-    let saveArgs = args;
-    let saveDevArgs = args;
-    saveArgs.push('--save');
-    saveDevArgs.push('--save-dev');
+    const devDependencies = require(dependenciesPath).devDependencies;    
 
-    saveArgs = saveArgs.concat(
-      Object.keys(dependencies).map(key => {
-        return `${key}@${dependencies[key]}`;
-      })
-    );
+    if (typeof dependencies !== 'undefined') {
+      let saveArgs = args;
+      saveArgs.push('--save');
+      saveArgs = saveArgs.concat(
+        Object.keys(dependencies).map(key => {
+          return `${key}@${dependencies[key]}`;
+        })
+      );
 
-    saveDevArgs = saveDevArgs.concat(
-      Object.keys(devDependencies).map(key => {
-        return `${key}@${devDependencies[key]}`;
-      })
-    );
-
-    const saveProc = spawn.sync(command, saveArgs, { stdio: 'inherit' });
-    if (saveProc.status !== 0) {
-      console.error(`\`${command} ${saveArgs.join(' ')}\` failed`);
-      return;
+      console.log(`Installing ${chalk.cyan('styleguide-template')}'s dependencies...`);
+      const proc = spawn.sync(command, saveArgs, { stdio: 'inherit' });
+      if (proc.status !== 0) {
+        console.error(`\`${command} ${saveArgs.join(' ')}\` failed`);
+        return;
+      }
     }
 
-    const saveDevProc = spawn.sync(command, saveDevArgs, { stdio: 'inherit' });
-    if (saveDevProc.status !== 0) {
-      console.error(`\`${command} ${saveDevArgs.join(' ')}\` failed`);
-      return;
+    if (typeof devDependencies !== 'undefined') {
+      let saveDevArgs = args;
+      saveDevArgs.push('--save-dev');
+    
+      saveDevArgs = saveDevArgs.concat(
+        Object.keys(devDependencies).map(key => {
+          return `${key}@${devDependencies[key]}`;
+        })
+      );
+      
+      console.log(`Installing ${chalk.cyan('styleguide-template')}'s devDependencies...`);
+      const proc = spawn.sync(command, saveDevArgs, { stdio: 'inherit' });
+      if (proc.status !== 0) {
+        console.error(`\`${command} ${saveDevArgs.join(' ')}\` failed`);
+        return;
+      }
     }
 
     fs.unlinkSync(dependenciesPath);
@@ -137,19 +148,11 @@ module.exports = function(appPath, appName, originalDirectory) {
   console.log(chalk.cyan('  npm test'));
   console.log('    Starts the test runner.');
   console.log();
-  console.log(chalk.cyan('  npm dist-patch'));
-  console.log('    Builds the dist directory and increments version 0.0.x.');
-  console.log();
-  console.log(chalk.cyan('  npm dist-minor'));
-  console.log('    Builds the dist directory and increments version 0.x.0.');
-  console.log();
-  console.log(chalk.cyan('  npm dist-major'));
-  console.log('    Builds the dist directory and increments version x.0.0.');
-  console.log();
   console.log('I suggest that you begin by typing:');
   console.log();
   console.log(chalk.cyan('  cd'), cdpath);
   console.log(chalk.cyan('  npm start'));
   console.log();
   console.log('Enjoy templating!');
+  console.log();
 }
