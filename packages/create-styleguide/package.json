@@ -12,7 +12,7 @@
     "url": "https://github.com/chlorophyllkid/create-styleguide/issues"
   },
   "engines": {
-    "node": ">=7.6"
+    "node": ">=4"
   },
   "files": [
     "index.js",
