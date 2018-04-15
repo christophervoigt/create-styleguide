@@ -14,7 +14,7 @@ const spawn = require('cross-spawn');
 
 
 module.exports = function(appPath, appName, originalDirectory) {
-  const ownPackageName = require(path.join(__dirname, '..', 'package.json')).name;
+  const ownPackageName = require(path.join(__dirname, 'package.json')).name;
   const ownPath = path.join(appPath, 'node_modules', ownPackageName);
   const appPackage = require(path.join(appPath, 'package.json'));
 
