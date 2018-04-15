@@ -1,0 +1,8 @@
+
+mixin cookieConsent()
+  .cookieConsent(id='cookieConsent')
+    div(data-cc-text)
+      p= lipsum(4, "sentences")
+      a(href='#') Datenschutzerklärung
+
+    div(data-cc-button) Akzeptieren

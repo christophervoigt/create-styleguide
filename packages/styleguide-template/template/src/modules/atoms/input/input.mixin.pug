@@ -1,0 +1,8 @@
+
+mixin input(type, name, placeholder)
+  -
+    type = type || 'text';
+    name = name || 'something';
+    placeholder = placeholder || '';
+
+  input(type=type, name=name, placeholder=placeholder)&attributes(attributes)

@@ -1,0 +1,24 @@
+
+@import '~cookieconsent/build/cookieconsent.min';
+
+.cc-window {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 9999;
+  background: yellow;
+}
+
+.cc-message {
+  display: block;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.cc-compliance {
+  text-align: center;
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "title": "Basics",
+    "subMenu": [
+      { "title": "Icons" },
+      { "title": "Typography" },
+      { "title": "Forms" }
+    ]
+  },
+  {
+    "title": "Modules",
+    "subMenu": [
+      { "title": "Header", "url": "/modules/organisms/header/documentation.html" },
+      { "title": "Footer", "url": "/modules/organisms/footer/documentation.html" }
+    ]
+  },  
+  {
+    "title": "Guidelines",
+    "subMenu": [
+      { "title": "HowTo" },
+      { "title": "Technologies" }
+    ]
+  }
+]

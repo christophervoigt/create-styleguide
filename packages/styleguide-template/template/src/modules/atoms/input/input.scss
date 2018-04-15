@@ -1,0 +1,11 @@
+
+input {
+  padding: 8px 12px;
+  background: green;
+  border: 0;
+  color: white;
+
+  &::placeholder {
+    color: white;
+  }
+}

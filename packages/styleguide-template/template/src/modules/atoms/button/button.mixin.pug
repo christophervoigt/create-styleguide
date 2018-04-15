@@ -1,0 +1,12 @@
+
+mixin button(type, text)
+  -
+    type = type || 'button';
+    text = text || 'Click me!';
+
+  case type
+    when 'a'
+      a.button(href='#')&attributes(attributes)= text
+
+    default
+      button.button(type='button')&attributes(attributes)= text

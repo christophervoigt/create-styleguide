@@ -1,0 +1,53 @@
+
+@font-face {
+  font-family: 'sg-icomoon';
+  src: url('sg-fonts/icomoon/icomoon.eot?q443ld');
+  src: url('sg-fonts/icomoon/icomoon.eot?q443ld#iefix') format('embedded-opentype'),
+    url('sg-fonts/icomoon/icomoon.ttf?q443ld') format('truetype'),
+    url('sg-fonts/icomoon/icomoon.woff?q443ld') format('woff'),
+    url('sg-fonts/icomoon/icomoon.svg?q443ld#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^='sg-icon-'],
+[class*=' sg-icon-'] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'sg-icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sg-icon-arrow-up:before {
+  content: '\e900';
+}
+
+.sg-icon-arrow-down:before {
+  content: '\e901';
+}
+
+.sg-icon-copyright:before {
+  content: '\e902';
+}
+
+@mixin make-sg-icon-before($icon) {
+  &:before {
+    font-family: 'sg-icomoon' !important;
+    content: $icon;
+  }
+}
+
+@mixin make-sg-icon-after($icon) {
+  &:after {
+    font-family: 'sg-icomoon' !important;
+    content: $icon;
+  }
+}

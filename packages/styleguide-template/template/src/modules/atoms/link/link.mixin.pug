@@ -1,0 +1,7 @@
+
+mixin link(text, destination)
+  -
+    destination = destination || '#';
+    text = text || 'Click me!';
+
+  a.link(href=destination)&attributes(attributes)= text

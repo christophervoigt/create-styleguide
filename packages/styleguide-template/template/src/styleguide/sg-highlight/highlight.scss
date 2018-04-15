@@ -1,0 +1,25 @@
+
+@import '~highlight.js/styles/atom-one-dark';
+
+.sg-highlight {
+  padding: 1rem 20px;
+
+  > a {
+    display: block;
+    text-align: center;
+  }
+
+  .toggle-container {
+    float: none;
+    padding: 0;
+    position: relative;
+  }
+
+  pre {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    color: inherit;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,32 @@
+
+include _mixins/_all
+include cookieConsent/cookieConsent.pug
+
+doctype html
+html(lang='de')
+  head
+    meta(name='viewport' content='initial-scale=1.0, width=device-width')
+    meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+    meta(charset="utf-8")
+    meta(name="theme-color", content="#ffffff")
+    link(rel="icon", type="image/png", href="/base/media/favicon/favicon-16x16.png", sizes="16x16")
+    link(rel="icon", type="image/png", href="/base/media/favicon/favicon-32x32.png", sizes="32x32")
+    link(rel="icon", type="image/png", href="/base/media/favicon/android-chrome-144x144.png", sizes="144x144")
+    link(rel="shortcut icon", type="image/x-icon", href="/base/media/favicon/favicon.ico")
+    link(rel="apple-touch-icon", href="/base/media/favicon/apple-touch-icon.png", sizes="180x180")
+    meta(name="msapplication-TileImage" content="/base/media/favicon/mstile-150x150.png")
+
+    block title
+      title styleguide
+
+    block stylesheets
+      link(rel='stylesheet', href='/base/base.css')
+      block extraStylesheets
+
+    block javascripts
+      script(src="/base/base.js", defer)
+      block extraJavascripts
+
+  body
+    +cookieConsent()
+    block page

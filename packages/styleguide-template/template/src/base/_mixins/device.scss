@@ -1,0 +1,13 @@
+
+@mixin device($type) {
+  @if $type == mobile {
+    @media (pointer:coarse) {
+      @content;
+    }
+  }
+  @else if $type == desktop {
+    @media (pointer:fine) {
+      @content;
+    }
+  }
+}

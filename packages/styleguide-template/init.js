@@ -22,10 +22,26 @@ module.exports = function(appPath, appName, originalDirectory) {
   appPackage.dependencies = appPackage.dependencies || {};
 
   appPackage.scripts = {
-    start: 'react-scripts start',
-    build: 'react-scripts build',
-    test: 'react-scripts test --env=jsdom',
-    eject: 'react-scripts eject',
+    prestart: 'rimraf app/',
+    start: 'node tasks/watch.js',
+    build: 'npm run build:css && npm run build:html && npm run build:img && npm run build:js && npm run build:static',
+    'build:css': 'node tasks/css.build.js',
+    'build:html': 'node tasks/html.build.js',
+    'build:img': 'node tasks/image.build.js',
+    'build:js': 'node tasks/javascript.build.js',
+    'build:static': 'node tasks/static.build.js',
+    test: 'npm run test:css && npm run test:js && npm run test:markdown',
+    'test:css': 'stylelint -q ./src/**/*.scss',
+    'test:js': 'eslint --quiet ./src/**/*.js ./tasks/**/*.build.js',
+    'test:markdown': 'remark -q . ./src/**/*.md',
+    preversion: 'npm test && rimraf dist/',
+    version: 'cross-env NODE_ENV=production npm run build && git add -A dist',
+    'version:patch': 'node tasks/version.js patch && git add -u',
+    'version:minor': 'node tasks/version.js minor && git add -u',
+    'version:major': 'node tasks/version.js major && git add -u',
+    'dist-patch': "npm run version:patch | npm version patch -m \"Upgrade assets to %s\"",
+    'dist-minor': "npm run version:minor | npm version minor -m \"Upgrade assets to %s\"",
+    'dist-major': "npm run version:major | npm version major -m \"Upgrade assets to %s\""
   };
 
   fs.writeFileSync(
@@ -60,28 +76,46 @@ module.exports = function(appPath, appName, originalDirectory) {
   }
 
   const command = 'npm';
-  let args = ['install', '--save'].filter(e => e);
+  const args = ['install', '--save-exact'];
 
-  const templateDependenciesPath = path.join(
-    appPath,
-    '.template.dependencies.json'
-  );
-  if (fs.existsSync(templateDependenciesPath)) {
-    const templateDependencies = require(templateDependenciesPath).dependencies;
+  const dependenciesPath = path.join(appPath, 'dependencies.json');
 
-    args = args.concat(
-      Object.keys(templateDependencies).map(key => {
-        return `${key}@${templateDependencies[key]}`;
+  if (fs.existsSync(dependenciesPath)) {
+    const dependencies = require(dependenciesPath).dependencies;
+    const devDependencies = require(dependenciesPath).devDependencies;
+    
+    let saveArgs = args;
+    let saveDevArgs = args;
+    saveArgs.push('--save');
+    saveDevArgs.push('--save-dev');
+
+    saveArgs = saveArgs.concat(
+      Object.keys(dependencies).map(key => {
+        return `${key}@${dependencies[key]}`;
       })
     );
-    fs.unlinkSync(templateDependenciesPath);
+
+    saveDevArgs = saveDevArgs.concat(
+      Object.keys(devDependencies).map(key => {
+        return `${key}@${devDependencies[key]}`;
+      })
+    );
+
+    const saveProc = spawn.sync(command, saveArgs, { stdio: 'inherit' });
+    if (saveProc.status !== 0) {
+      console.error(`\`${command} ${saveArgs.join(' ')}\` failed`);
+      return;
+    }
+
+    const saveDevProc = spawn.sync(command, saveDevArgs, { stdio: 'inherit' });
+    if (saveDevProc.status !== 0) {
+      console.error(`\`${command} ${saveDevArgs.join(' ')}\` failed`);
+      return;
+    }
+
+    fs.unlinkSync(dependenciesPath);
   }
 
-  const proc = spawn.sync(command, args, { stdio: 'inherit' });
-  if (proc.status !== 0) {
-    console.error(`\`${command} ${args.join(' ')}\` failed`);
-    return;
-  }
 
   let cdpath;
   if (originalDirectory && path.join(originalDirectory, appName) === appPath) {
@@ -95,18 +129,27 @@ module.exports = function(appPath, appName, originalDirectory) {
   console.log('Inside that directory, you can run several commands:');
   console.log();
   console.log(chalk.cyan('  npm start'));
-  console.log('    Starts the development server.');
+  console.log('    Runs build and watch task for local development.');
   console.log();
   console.log(chalk.cyan('  npm run build'));
-  console.log('    Bundles the app into static files for production.');
+  console.log('    Builds the app directory.');
   console.log();
   console.log(chalk.cyan('  npm test'));
   console.log('    Starts the test runner.');
   console.log();
-  console.log('We suggest that you begin by typing:');
+  console.log(chalk.cyan('  npm dist-patch'));
+  console.log('    Builds the dist directory and increments version 0.0.x.');
+  console.log();
+  console.log(chalk.cyan('  npm dist-minor'));
+  console.log('    Builds the dist directory and increments version 0.x.0.');
+  console.log();
+  console.log(chalk.cyan('  npm dist-major'));
+  console.log('    Builds the dist directory and increments version x.0.0.');
+  console.log();
+  console.log('I suggest that you begin by typing:');
   console.log();
   console.log(chalk.cyan('  cd'), cdpath);
-  console.log(`  ${chalk.cyan('npm start')}`);
+  console.log(chalk.cyan('  npm start'));
   console.log();
-  console.log('Happy hacking!');
+  console.log('Enjoy templating!');
 }

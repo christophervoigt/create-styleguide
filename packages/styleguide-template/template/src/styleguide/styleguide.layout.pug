@@ -1,0 +1,31 @@
+extends ../base/base.layout.pug
+
+include sg-header/header.pug
+include sg-highlight/highlight.pug
+include sg-logo/logo.pug
+include sg-markdown/markdown.pug
+include sg-menu/menu.pug
+include sg-tabs/tabs.pug
+include sg-version/version.pug
+include sg-usedModules/usedModules.pug
+
+
+block stylesheets
+  link(rel='stylesheet', href='/base/base.css')
+  link(rel='stylesheet', href='/styleguide/styleguide.css')
+  block extraStylesheets
+
+block javascripts
+  script(src="/base/base.js", defer)
+  script(src="/styleguide/styleguide.js", defer)
+  block extraJavascripts
+
+
+block page
+  aside
+    +sg-logo()
+    +sg-menu()
+    +sg-version()
+
+  main
+    block main

@@ -1,0 +1,9 @@
+
+mixin sg-version()
+  -
+    var fs = self.require('fs');
+    var package = JSON.parse(fs.readFileSync('package.json'));
+
+  .sg-version
+    p Version #{package.version}
+    p License #{package.license}

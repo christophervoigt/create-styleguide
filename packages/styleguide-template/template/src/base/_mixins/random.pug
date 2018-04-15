@@ -1,0 +1,27 @@
+
+-
+  function rnd (min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
+
+-
+  function randomDate () {
+    var date = new Date();
+    date.setDate(date.getDate() - rnd(0, 100))
+
+    return ('0' + date.getDate()).slice(-2) + '.' + ('0' + (date.getMonth() + 1)).slice(-2) + '.' + date.getFullYear()
+  }
+
+
+-
+  function randomId(prefix) {
+
+    function getRndChar(charset) {
+      return charset[Math.floor(Math.random() * charset.length)]
+    }
+
+    prefix = prefix || 'random-id-'
+    const charset = 'abcdefghijklmnopqrstuvwxyz1234567890'
+    return prefix + getRndChar(charset) + getRndChar(charset) + getRndChar(charset) + getRndChar(charset);
+  }

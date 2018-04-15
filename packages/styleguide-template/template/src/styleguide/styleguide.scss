@@ -1,0 +1,32 @@
+
+@import '_sg-variables/all';
+@import '_sg-mixins/all';
+@import 'sg-fonts/icomoon';
+@import 'sg-header/header';
+@import 'sg-highlight/highlight';
+@import 'sg-logo/logo';
+@import 'sg-markdown/markdown';
+@import 'sg-menu/menu';
+@import 'sg-tabs/tabs';
+@import 'sg-version/version';
+@import 'sg-usedModules/usedModules';
+
+body {
+  display: flex;
+  flex-direction: row;
+  color: $sg-black;
+}
+
+body > aside {
+  height: 100vh;
+  border-right: 3px solid $sg-blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body > main {
+  flex: 0 1 100%;
+  overflow: auto;
+  height: 100vh;
+}

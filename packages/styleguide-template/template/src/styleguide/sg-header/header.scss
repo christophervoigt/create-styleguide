@@ -1,0 +1,14 @@
+
+.sg-header {
+  padding: 0 20px;
+  height: 190px;
+  display: flex;
+  align-items: flex-end;
+
+  &_title {
+    text-transform: uppercase;
+    margin: 20px 0;
+    width: 100%;
+    line-height: 1;
+  }
+}

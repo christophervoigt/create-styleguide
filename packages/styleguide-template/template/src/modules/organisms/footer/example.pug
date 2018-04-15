@@ -1,0 +1,12 @@
+extends ../../../base/base.layout.pug
+
+include ../../atoms/link/link.mixin.pug
+
+block extraStylesheets
+  link(rel='stylesheet', href='/modules/organisms/footer/footer.css')
+
+block page
+  footer
+    +link('Impressum','#')
+    +link('Kontakt','#')
+    +link('Sitemap','#')

@@ -1,0 +1,11 @@
+
+mixin sg-markdown(filepath)
+  -
+    filepath = filepath || 'README.md';
+
+    var fs = self.require('fs');
+    var markdown = self.require('marked');
+    var readme = fs.readFileSync(filepath);
+
+  .sg-markdown
+    .markdown-body!= markdown(readme.toString())

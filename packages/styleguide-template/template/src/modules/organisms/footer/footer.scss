@@ -1,0 +1,11 @@
+@import '../../atoms/link/link';
+
+footer {
+  background-color: red;
+  text-align: right;
+  padding: 20px;
+
+  a + a {
+    margin-left: 20px;
+  }
+}

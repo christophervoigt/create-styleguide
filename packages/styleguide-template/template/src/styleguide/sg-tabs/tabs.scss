@@ -1,0 +1,34 @@
+
+.sg-tabs {
+  background: $sg-grey;
+  padding: 0 20px;
+
+  ul {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  li {
+    &:hover,
+    &.active {
+      a {
+        background: $sg-white;
+      }
+    }
+  }
+
+  li + li {
+    margin-left: 20px;
+  }
+
+  a {
+    display: block;
+    padding: 1rem 20px;
+    color: $sg-blue;
+    text-decoration: none;
+  }
+}

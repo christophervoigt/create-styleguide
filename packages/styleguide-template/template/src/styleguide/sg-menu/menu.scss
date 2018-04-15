@@ -1,0 +1,48 @@
+
+.sg-menu {
+  padding: 0 20px;
+
+  & > ul > li + li {
+    margin-top: 20px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  span {
+    display: flex;
+
+    @include make-sg-icon-after('\e901');
+    @include device(mobile) {
+      &:after {
+        pointer-events: none !important;
+      }
+    }
+
+    &:after {
+      margin-left: 5px;
+      transition: transform .2s ease-out;
+    }
+
+    &:hover:after,
+    &.expanded:hover:after {
+      transform: rotate(90deg);
+    }
+
+    &.expanded:after {
+      transform: rotate(180deg);
+    }
+  }
+
+  a {
+    color: $sg-blue;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
