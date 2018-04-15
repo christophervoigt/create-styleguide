@@ -4,6 +4,9 @@
   "description": "Configuration and structure for Create Styleguide.",
   "license": "MIT",
   "author": "Christopher Voigt <chlorophyllkid@gmail.com>",
+  "engines": {
+    "node": ">=6"
+  },
   "repository": "chlorophyllkid/create-styleguide",
   "bugs": {
     "url": "https://github.com/chlorophyllkid/create-styleguide/issues"
