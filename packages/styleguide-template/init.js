@@ -98,6 +98,7 @@ module.exports = function(appPath, appName, originalDirectory) {
         })
       );
 
+      console.log();
       console.log(`Installing ${chalk.cyan('styleguide-template')}'s dependencies...`);
       const proc = spawn.sync(command, saveArgs, { stdio: 'inherit' });
       if (proc.status !== 0) {
@@ -116,6 +117,7 @@ module.exports = function(appPath, appName, originalDirectory) {
         })
       );
       
+      console.log();
       console.log(`Installing ${chalk.cyan('styleguide-template')}'s devDependencies...`);
       const proc = spawn.sync(command, saveDevArgs, { stdio: 'inherit' });
       if (proc.status !== 0) {
