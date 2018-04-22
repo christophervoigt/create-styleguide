@@ -1,6 +1,5 @@
 
 # Create Styleguide
-
 Create styleguides with no build configuration.
 
 
@@ -25,7 +24,8 @@ Use the `--help` option.
 ```
 $ create-styleguide --help
 ```
-_More options comming soon._
+
+_A `--template` option for other/personal boilerplates is comming soon._
 
 
 ## License
@@ -33,4 +33,4 @@ This CLI was written by [Christopher Voigt](https://twitter.com/chlorophyllkid) 
 
 ---
 
-_Many thanks to [create-react-app](https://github.com/facebook/create-react-app) for the inspiration with this package_
+_Many thanks to [create-react-app](https://github.com/facebook/create-react-app) for the inspiration with this package._
