@@ -1,7 +1,17 @@
 {
   "name": "styleguide-template",
   "version": "0.1.3",
-  "description": "Configuration and structure for Create Styleguide.",
+  "keywords": [
+    "styleguide",
+    "front-end",
+    "template",
+    "boilerplate",
+    "starter",
+    "pug",
+    "sass",
+    "es6"
+  ],
+  "description": "Default configuration and boilerplate for Create Styleguide.",
   "license": "MIT",
   "author": "Christopher Voigt <chlorophyllkid@gmail.com>",
   "engines": {

@@ -2,7 +2,9 @@
   "name": "create-styleguide",
   "version": "0.1.1",
   "keywords": [
-    "styleguide"
+    "styleguide",
+    "front-end",
+    "cli"
   ],
   "description": "Creates styleguides with no build configuration.",
   "license": "MIT",
