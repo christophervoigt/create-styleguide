@@ -1,5 +1,8 @@
 
 # Create Styleguide
+[![NPM Version](http://img.shields.io/npm/v/create-styleguide.svg?style=for-the-badge)](https://www.npmjs.com/package/create-styleguide)
+[![NPM Downloads](https://img.shields.io/npm/dm/create-styleguide.svg?style=for-the-badge)](https://npmcharts.com/compare/create-styleguide?minimal=true)
+
 Create styleguides with no build configuration.
 
 
