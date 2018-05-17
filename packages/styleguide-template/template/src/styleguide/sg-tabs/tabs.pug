@@ -1,10 +1,10 @@
 
-mixin sg-tabs(data)
+mixin sg-tabs(linkList)
   -
-    data.linkList = data.linkList || [];
+    linkList = linkList || [];
 
   nav.sg-tabs
     ul
-      each link in data.linkList
+      each link in linkList
         li(class=link.active ? 'active' : '')
-          a(href=link.url, target= link.newTab ? '_blank' : '_self')= link.title
+          a(href=link.url)= link.title

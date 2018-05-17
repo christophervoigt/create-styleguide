@@ -1,8 +1,21 @@
 
 .sg-version {
-  background: $sg-grey;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .125s ease-in, visibility .125s ease-in;
+  padding: 1em;
 
-  p {
-    text-align: center;
+  @include media('>md') {
+    opacity: 1;
+    visibility: visible;
   }
+
+  span {
+    color: $sg-white;
+  }
+}
+
+body.-openSidebar .sg-version {
+  opacity: 1;
+  visibility: visible;
 }

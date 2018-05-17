@@ -2,7 +2,7 @@
 import Searchbar from '../../molecules/searchbar/searchbar';
 
 export default function Header() {
-  Searchbar('header .searchbar', {
+  Searchbar('.header .searchbar', {
     mouseover: () => {
       console.log('header:', 'you hovered over my searchbar');
     },

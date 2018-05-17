@@ -1,0 +1,31 @@
+
+.sg-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border-right: 3px solid $sg-ubuntu-orange;
+  background: $sg-light-aubergine;
+
+  &_handle {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include sg-icon-before($sg-icon-arrow_right);
+
+    @include media('>md') {
+      display: none;
+    }
+
+    &:before {
+      color: $sg-white;
+      font-size: 1.5em;
+    }
+  }
+}
+
+body.-openSidebar .sg-sidebar_handle {
+  transform: translateY(-50%) rotate(-180deg);
+}

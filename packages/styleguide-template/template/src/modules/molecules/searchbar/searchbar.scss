@@ -4,4 +4,22 @@
 
 .searchbar {
   display: flex;
+
+  &_input {
+    color: black;
+    background: orange;
+
+    &::placeholder {
+      color: black;
+    }
+  }
+
+  &_button {
+    color: black;
+    background: orange;
+  }
+
+  &_input + &_button {
+    border-left: 3px dashed white;
+  }
 }

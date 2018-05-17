@@ -1,9 +1,22 @@
 
 .sg-menu {
-  padding: 0 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .125s ease-in, visibility .125s ease-in;
+  padding: 1em;
+
+  @include media('>md') {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  > ul {
+    display: flex;
+    flex-direction: column;
+  }
 
   & > ul > li + li {
-    margin-top: 20px;
+    margin-top: 2em;
   }
 
   ul {
@@ -13,36 +26,17 @@
   }
 
   span {
-    display: flex;
-
-    @include make-sg-icon-after('\e901');
-    @include device(mobile) {
-      &:after {
-        pointer-events: none !important;
-      }
-    }
-
-    &:after {
-      margin-left: 5px;
-      transition: transform .2s ease-out;
-    }
-
-    &:hover:after,
-    &.expanded:hover:after {
-      transform: rotate(90deg);
-    }
-
-    &.expanded:after {
-      transform: rotate(180deg);
-    }
+    text-transform: uppercase;
+    color: $sg-white;
   }
 
   a {
-    color: $sg-blue;
+    color: $sg-ubuntu-orange;
     text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
+}
+
+body.-openSidebar .sg-menu {
+  opacity: 1;
+  visibility: visible;
 }

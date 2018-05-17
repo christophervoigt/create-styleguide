@@ -1,14 +1,25 @@
 
 .sg-header {
-  padding: 0 20px;
-  height: 190px;
   display: flex;
-  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: column;
+  background: $sg-ubuntu-orange-10;
+
+  padding: 0 1em;
+  height: 20vh;
+  min-height: 100px;
 
   &_title {
-    text-transform: uppercase;
-    margin: 20px 0;
     width: 100%;
-    line-height: 1;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    @include media('<md') {
+      margin: 1rem 0;
+    }
+  }
+
+  &_tabs {
+    display: block;
   }
 }

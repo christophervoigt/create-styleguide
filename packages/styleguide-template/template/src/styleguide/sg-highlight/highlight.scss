@@ -1,8 +1,8 @@
 
-@import '~highlight.js/styles/atom-one-dark';
+@import '~highlight.js/styles/github';
 
 .sg-highlight {
-  padding: 1rem 20px;
+  padding: 1rem;
 
   > a {
     display: block;
@@ -21,5 +21,11 @@
     border: 0;
     color: inherit;
     font-size: 12px;
+  }
+
+  code {
+    &:not(.hljs) {
+      display: none;
+    }
   }
 }

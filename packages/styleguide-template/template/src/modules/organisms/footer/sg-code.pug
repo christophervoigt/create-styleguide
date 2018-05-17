@@ -1,0 +1,18 @@
+
+extends ../../../styleguide/styleguide.layout.pug
+include ./footer.mixin.pug
+
+block main
+  +sg-header({
+    title: 'Footer',
+    linkList: [
+      { title: 'Documentation', url: '/modules/organisms/footer/sg-documentation.html' },
+      { title: 'Code', url: '/modules/organisms/footer/sg-code.html', active: true },
+      { title: 'Example', url: '/modules/organisms/footer/sg-example.html' }
+    ],
+  })
+
+  +sg-usedModules()
+
+  +sg-highlight()
+    +footer()

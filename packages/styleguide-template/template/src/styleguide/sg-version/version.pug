@@ -5,5 +5,4 @@ mixin sg-version()
     var package = JSON.parse(fs.readFileSync('package.json'));
 
   .sg-version
-    p Version #{package.version}
-    p License #{package.license}
+    span v#{package.version}

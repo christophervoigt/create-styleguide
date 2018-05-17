@@ -9,9 +9,10 @@ mixin sg-menu()
       each mainPoint in mainMenu
         li
           if mainPoint.subMenu
-            span(data-collapse='ul[data-collapse-target]')= mainPoint.title
-            ul(data-collapse-target)
+            span= mainPoint.title
+            ul
               each subPoint in mainPoint.subMenu
-                li: a(href=subPoint.url)= subPoint.title
+                li
+                  a(href=subPoint.url)= subPoint.title
           else
             a(href=mainPoint.url)= mainPoint.title

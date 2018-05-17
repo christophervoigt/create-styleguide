@@ -1,0 +1,10 @@
+
+mixin sg-example(data)
+  -
+    data.src = data.src || '';
+
+  .sg-example
+    .sg-example_external-link
+      a(href=data.src, target='_blank') Open in new tab
+
+    iframe.sg-example_iframe(src=data.src)

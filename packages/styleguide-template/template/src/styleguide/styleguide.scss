@@ -1,7 +1,8 @@
 
+@import '../base/base';
 @import '_sg-variables/all';
 @import '_sg-mixins/all';
-@import 'sg-fonts/icomoon';
+@import 'sg-fonts/sg-icons';
 @import 'sg-header/header';
 @import 'sg-highlight/highlight';
 @import 'sg-logo/logo';
@@ -10,23 +11,53 @@
 @import 'sg-tabs/tabs';
 @import 'sg-version/version';
 @import 'sg-usedModules/usedModules';
+@import 'sg-sidebar/sidebar';
+@import 'sg-example/example';
 
 body {
-  display: flex;
-  flex-direction: row;
-  color: $sg-black;
-}
+  color: $sg-text-grey;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 
-body > aside {
-  height: 100vh;
-  border-right: 3px solid $sg-blue;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+  height: 100%;
+  position: relative;
 
-body > main {
-  flex: 0 1 100%;
-  overflow: auto;
-  height: 100vh;
+  > aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    overflow: hidden;
+
+    height: 100%;
+    width: 6vw;
+    transition: width .125s ease-in, box-shadow .25s ease-out;
+
+    @include media('>md') {
+      width: 15vw;
+    }
+  }
+
+  > main {
+    overflow: hidden;
+
+    width: 94vw;
+    margin-left: 6vw;
+
+    @include media('>md') {
+      width: 85vw;
+      margin-left: 15vw;
+    }
+  }
+
+  &.-openSidebar {
+    > aside {
+      width: 94vw;
+      box-shadow: 0 0 50vw 100vw transparentize($sg-text-grey, .5);
+
+      @include media('>md') {
+        width: 15vw;
+        box-shadow: none;
+      }
+    }
+  }
 }

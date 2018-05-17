@@ -2,23 +2,20 @@
   {
     "title": "Basics",
     "subMenu": [
-      { "title": "Icons" },
-      { "title": "Typography" },
-      { "title": "Forms" }
+      { "title": "Icons", "url": "/modules/atoms/icons/icons.html" }
     ]
   },
   {
     "title": "Modules",
     "subMenu": [
-      { "title": "Header", "url": "/modules/organisms/header/documentation.html" },
-      { "title": "Footer", "url": "/modules/organisms/footer/documentation.html" }
+      { "title": "Header", "url": "/modules/organisms/header/sg-documentation.html" },
+      { "title": "Footer", "url": "/modules/organisms/footer/sg-documentation.html" }
     ]
   },  
   {
-    "title": "Guidelines",
+    "title": "Guides",
     "subMenu": [
-      { "title": "HowTo" },
-      { "title": "Technologies" }
+      { "title": "Dependencies", "url": "/guides/dependencies.html" }
     ]
   }
 ]

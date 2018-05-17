@@ -1,9 +1,10 @@
+
 @import '../../atoms/link/link';
 
-footer {
-  background-color: red;
+.footer {
   text-align: right;
-  padding: 20px;
+  background-color: red;
+  padding: 16px;
 
   a + a {
     margin-left: 20px;

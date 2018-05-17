@@ -1,8 +1,12 @@
 
 @import '../../molecules/searchbar/searchbar';
 
-header {
+.header {
   display: flex;
   background: red;
   padding: 16px;
+
+  &_searchbar {
+    width: 100%;
+  }
 }

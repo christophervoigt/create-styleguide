@@ -1,61 +1,63 @@
+/* eslint global-require: ["off", { allow: ["warn"] }] */
 /* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
+/* eslint import/no-dynamic-require: ["off", { allow: ["warn"] }] */
 
-const browserSync = require('browser-sync');
+const browserSync = require('browser-sync').create();
 const watch = require('node-watch');
+const logger = require('./utils/logger');
 
-// tasks
-const rebuildCSS = require('./css.build').rebuild;
-const rebuildHTML = require('./html.build').rebuild;
-const rebuildIMG = require('./image.build').rebuild;
-const rebuildJS = require('./javascript.build').rebuild;
-const rebuildSTATIC = require('./static.build').rebuild;
+const rebuildFONT = require('./build/font').rebuild;
+const rebuildHTML = require('./build/html').rebuild;
+const rebuildCSS = require('./build/css').rebuild;
+const rebuildJS = require('./build/javascript').rebuild;
+const rebuildIMG = require('./build/image').rebuild;
+const rebuildSTATIC = require('./build/static').rebuild;
 
-const srcPath = 'src';
+const srcFolder = 'src';
+const distFolder = 'app';
+const tasks = ['font', 'html', 'css', 'javascript', 'image', 'static'];
 
-browserSync({
-  server: {
-    baseDir: 'app',
-  },
-  open: 'local',
-});
+function startBrowserSync() {
+  logger.start('Browsersync');
 
+  browserSync.init({
+    server: { baseDir: distFolder },
+    open: 'local',
+  });
+}
 
-watch(srcPath, {
-  recursive: true,
-  filter: /\.scss$/,
-}, async (event, name) => {
-  await rebuildCSS(name);
-  browserSync.reload();
-});
+function startWatchTask() {
+  watch(srcFolder, { recursive: true }, async (event, name) => {
+    if (/\.font.json$/.test(name)) {
+      await rebuildFONT(event, name);
+    } else if (/\.pug$/.test(name)) {
+      await rebuildHTML(event, name);
+    } else if (/\.scss$/.test(name)) {
+      await rebuildCSS(event, name);
+    } else if (/\.js$/.test(name)) {
+      await rebuildJS(event, name);
+    } else if (/\.jpg$|\.png$|\.svg$|\.ico$/.test(name)) {
+      await rebuildIMG(event, name);
+    } else if (/\.eot$|\.woff$|\.woff2$|\.ttf$|\.json$/.test(name)) {
+      await rebuildSTATIC(event, name);
+    }
 
-watch(srcPath, {
-  recursive: true,
-  filter: /\.pug$/,
-}, async (event, name) => {
-  await rebuildHTML(name);
-  browserSync.reload();
-});
+    browserSync.reload();
+  });
+}
 
-watch(srcPath, {
-  recursive: true,
-  filter: /\.jpg$|\.png$|\.ico$/,
-}, async (event, name) => {
-  await rebuildIMG(name);
-  browserSync.reload();
-});
+(async () => {
+  await Promise.all(tasks.map(async (task) => {
+    const startTime = new Date().getTime();
+    logger.start(task);
 
-watch(srcPath, {
-  recursive: true,
-  filter: /\.js$/,
-}, async (event, name) => {
-  await rebuildJS(name);
-  browserSync.reload();
-});
+    const { run } = require(`./build/${task}`);
+    await run();
 
-watch(srcPath, {
-  recursive: true,
-  filter: /\.woff$|\.woff2$|\.ttf$|\.json$/,
-}, async (event, name) => {
-  await rebuildSTATIC(name);
-  browserSync.reload();
-});
+    const time = new Date().getTime() - startTime;
+    logger.finish(task, time);
+  }));
+
+  startBrowserSync();
+  startWatchTask();
+})();

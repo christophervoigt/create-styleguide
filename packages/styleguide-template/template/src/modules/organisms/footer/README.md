@@ -1,5 +1,5 @@
 
-# Footer Documentation
+## Documentation
 
 This is a even more awesome Markdown text with [http://links.com](#), 
 

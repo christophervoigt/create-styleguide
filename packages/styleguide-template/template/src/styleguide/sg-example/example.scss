@@ -1,0 +1,25 @@
+
+.sg-example {
+  padding: 1em;
+  height: 80vh;
+
+  &_external-link {
+    margin-bottom: 1em;
+
+    a {
+      color: $sg-ubuntu-orange;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &_iframe {
+    width: 100%;
+    height: 67vh;
+    border: 0;
+  }
+}

@@ -1,5 +1,62 @@
 
-$sg-blue: #108eb4;
-$sg-grey: lightgrey;
-$sg-black: #282c34;
-$sg-white: #ffffff;
+// Ubuntu color palette (partials)
+// https://design.ubuntu.com/brand/colour-palette/
+
+// Main color
+$sg-ubuntu-orange: #E95420;
+$sg-white: #FFFFFF;
+$sg-black: #000000;
+
+// Supporting colors
+$sg-light-aubergine: #77216F;
+
+// Neutral colors
+$sg-warm-grey: #AEA79F;
+$sg-cool-grey: #333333;
+$sg-text-grey: #111111;
+
+// Tints
+$sg-ubuntu-orange-100: $sg-ubuntu-orange;
+$sg-ubuntu-orange-90: lighten($sg-ubuntu-orange, 5%);
+$sg-ubuntu-orange-80: lighten($sg-ubuntu-orange, 10%);
+$sg-ubuntu-orange-70: lighten($sg-ubuntu-orange, 14%);
+$sg-ubuntu-orange-60: lighten($sg-ubuntu-orange, 19%);
+$sg-ubuntu-orange-50: lighten($sg-ubuntu-orange, 22%);
+$sg-ubuntu-orange-45: lighten($sg-ubuntu-orange, 26%);
+$sg-ubuntu-orange-40: lighten($sg-ubuntu-orange, 29%);
+$sg-ubuntu-orange-35: lighten($sg-ubuntu-orange, 31%);
+$sg-ubuntu-orange-30: lighten($sg-ubuntu-orange, 33%);
+$sg-ubuntu-orange-25: lighten($sg-ubuntu-orange, 36%);
+$sg-ubuntu-orange-20: lighten($sg-ubuntu-orange, 38%);
+$sg-ubuntu-orange-15: lighten($sg-ubuntu-orange, 41%);
+$sg-ubuntu-orange-10: lighten($sg-ubuntu-orange, 44%);
+
+$sg-light-aubergine-100: $sg-light-aubergine;
+$sg-light-aubergine-90: lighten(desaturate($sg-light-aubergine, 16%), 7%);
+$sg-light-aubergine-80: lighten(desaturate($sg-light-aubergine, 26%), 14%);
+$sg-light-aubergine-70: lighten(desaturate($sg-light-aubergine, 33%), 21%);
+$sg-light-aubergine-60: lighten(desaturate($sg-light-aubergine, 33%), 28%);
+$sg-light-aubergine-50: lighten(desaturate($sg-light-aubergine, 33%), 35%);
+$sg-light-aubergine-45: lighten(desaturate($sg-light-aubergine, 34%), 38%);
+$sg-light-aubergine-40: lighten(desaturate($sg-light-aubergine, 33%), 42%);
+$sg-light-aubergine-35: lighten(desaturate($sg-light-aubergine, 33%), 45%);
+$sg-light-aubergine-30: lighten(desaturate($sg-light-aubergine, 33%), 49%);
+$sg-light-aubergine-25: lighten(desaturate($sg-light-aubergine, 33%), 52%);
+$sg-light-aubergine-20: lighten(desaturate($sg-light-aubergine, 34%), 56%);
+$sg-light-aubergine-15: lighten(desaturate($sg-light-aubergine, 33%), 59%);
+$sg-light-aubergine-10: lighten(desaturate($sg-light-aubergine, 33%), 63%);
+
+$sg-warm-grey-100: $sg-warm-grey;
+$sg-warm-grey-90: lighten($sg-warm-grey, 4%);
+$sg-warm-grey-80: lighten($sg-warm-grey, 7%);
+$sg-warm-grey-70: lighten($sg-warm-grey, 10%);
+$sg-warm-grey-60: lighten($sg-warm-grey, 14%);
+$sg-warm-grey-50: lighten($sg-warm-grey, 18%);
+$sg-warm-grey-45: lighten($sg-warm-grey, 19%);
+$sg-warm-grey-40: lighten($sg-warm-grey, 21%);
+$sg-warm-grey-35: lighten($sg-warm-grey, 23%);
+$sg-warm-grey-30: lighten($sg-warm-grey, 24%);
+$sg-warm-grey-25: lighten($sg-warm-grey, 26%);
+$sg-warm-grey-20: lighten($sg-warm-grey, 28%);
+$sg-warm-grey-15: lighten($sg-warm-grey, 30%);
+$sg-warm-grey-10: lighten($sg-warm-grey, 31%);

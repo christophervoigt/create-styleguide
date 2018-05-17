@@ -1,0 +1,14 @@
+
+extends ../../../styleguide/styleguide.layout.pug
+
+block main
+  +sg-header({
+    title: 'Footer',
+    linkList: [
+      { title: 'Documentation', url: '/modules/organisms/footer/sg-documentation.html', active: true },
+      { title: 'Code', url: '/modules/organisms/footer/sg-code.html' },
+      { title: 'Example', url: '/modules/organisms/footer/sg-example.html' }
+    ],
+  })
+
+  +sg-markdown('src/modules/organisms/footer/README.md')

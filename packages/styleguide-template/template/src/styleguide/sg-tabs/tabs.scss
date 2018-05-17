@@ -1,34 +1,41 @@
 
 .sg-tabs {
-  background: $sg-grey;
-  padding: 0 20px;
+  background: $sg-ubuntu-orange-10;
 
   ul {
+    display: flex;
     list-style: none;
     margin: 0 auto;
     padding: 0;
-
-    display: flex;
-    justify-content: center;
   }
 
   li {
-    &:hover,
-    &.active {
-      a {
-        background: $sg-white;
+
+    @include media('hover') {
+      &:hover a {
+        color: $sg-text-grey;
+        border-bottom: 3px solid $sg-text-grey;
+      }
+    }
+
+    &.active a {
+      color: $sg-text-grey;
+      border-bottom: 3px solid $sg-text-grey;
+    }
+
+    & + li {
+      margin-left: 1em;
+
+      @include media('>md') {
+        margin-left: 2em;
       }
     }
   }
 
-  li + li {
-    margin-left: 20px;
-  }
-
   a {
     display: block;
-    padding: 1rem 20px;
-    color: $sg-blue;
+    padding: 1em 0;
+    color: $sg-warm-grey;
     text-decoration: none;
   }
 }

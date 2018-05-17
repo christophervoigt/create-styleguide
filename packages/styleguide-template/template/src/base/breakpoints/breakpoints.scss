@@ -1,0 +1,47 @@
+
+$breakpoint-xs: 544px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1216px;
+$breakpoint-xl: 1440px;
+
+@function translate-media-condition($condition) {
+  $conditionMap: (
+    'print': 'only print',
+    'screen': 'only screen',
+    'retina': '(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 120dpi)',
+
+    'hover': '(hover: hover)',
+    '!hover': '(hover: none)',
+
+    '<xs': '(max-width: #{$breakpoint-xs - 1})',
+    '<sm': '(max-width: #{$breakpoint-sm - 1})',
+    '<md': '(max-width: #{$breakpoint-md - 1})',
+    '<lg': '(max-width: #{$breakpoint-lg - 1})',
+    '<xl': '(max-width: #{$breakpoint-xl - 1})',
+
+    '>xs': '(min-width: #{$breakpoint-xs})',
+    '>sm': '(min-width: #{$breakpoint-sm})',
+    '>md': '(min-width: #{$breakpoint-md})',
+    '>lg': '(min-width: #{$breakpoint-lg})',
+    '>xl': '(min-width: #{$breakpoint-xl})',
+  );
+
+  @return map-get($conditionMap, $condition);
+}
+
+@mixin media($args...) {
+  $query: '';
+
+  @each $arg in $args {
+    $and: '';
+    @if ($query != '') {
+      $and: ' and ';
+    }
+    $query: $query + $and + translate-media-condition($arg);
+  }
+
+  @media #{$query} {
+    @content;
+  }
+}

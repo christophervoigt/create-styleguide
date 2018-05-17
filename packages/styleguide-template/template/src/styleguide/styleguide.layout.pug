@@ -8,24 +8,23 @@ include sg-menu/menu.pug
 include sg-tabs/tabs.pug
 include sg-version/version.pug
 include sg-usedModules/usedModules.pug
+include sg-sidebar/sidebar.pug
+include sg-example/example.pug
+
+include sg-fonts/sg-icons_generated.pug
 
 
 block stylesheets
-  link(rel='stylesheet', href='/base/base.css')
   link(rel='stylesheet', href='/styleguide/styleguide.css')
   block extraStylesheets
 
 block javascripts
-  script(src="/base/base.js", defer)
   script(src="/styleguide/styleguide.js", defer)
   block extraJavascripts
 
 
 block page
-  aside
-    +sg-logo()
-    +sg-menu()
-    +sg-version()
+  +sg-sidebar()
 
   main
     block main

@@ -1,0 +1,14 @@
+
+extends ../../../styleguide/styleguide.layout.pug
+
+block main
+  +sg-header({
+    title: 'Header',
+    linkList: [
+      { title: 'Documentation', url: '/modules/organisms/header/sg-documentation.html' },
+      { title: 'Code', url: '/modules/organisms/header/sg-code.html' },
+      { title: 'Example', url: '/modules/organisms/header/sg-example.html', active: true },
+    ],
+  })
+
+  +sg-example({src: '/modules/organisms/header/header.html'})
