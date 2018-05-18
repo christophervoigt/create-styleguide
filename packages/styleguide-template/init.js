@@ -33,7 +33,7 @@ module.exports = function(appPath, appName, originalDirectory) {
     'build:js': 'node tasks/javascript.build.js',
     'build:static': 'node tasks/static.build.js',
     test: 'npm run lint && npm run test:tape',
-    'test:tape': 'node tasks/test.js | tap-min',
+    'test:tape': 'node tasks/test.js',
     lint: 'npm run lint:css && npm run lint:js && npm run lint:markdown',
     'lint:css': 'stylelint -q ./src/**/*.scss',
     'lint:js': 'eslint --quiet ./src/**/*.js ./tasks/**/*.js',
