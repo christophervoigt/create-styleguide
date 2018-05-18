@@ -16,8 +16,8 @@ $ npm install -g create-styleguide
 ## Usage
 Begin by typing:
 ```
-$ create-styleguide <project-directory>
-$ cd <project-directory>
+$ create-styleguide my-styleguide
+$ cd my-styleguide
 $ npm start
 ```
 
