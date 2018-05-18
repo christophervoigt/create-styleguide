@@ -26,7 +26,7 @@ const program = new commander.Command(packageJson.name)
   .on('--help', () => {
     console.log(`    Only ${chalk.green('<project-directory>')} is required.`);
     console.log();
-    console.log(`    If you have any problems, do not hesitate to file an issue:`);
+    console.log(`    If you encounter any problems, do not hesitate to file an issue:`);
     console.log(`      ${chalk.cyan('https://github.com/chlorophyllkid/create-styleguide/issues/new')}`);
     console.log();
   })
@@ -48,7 +48,7 @@ if (typeof projectName === 'undefined') {
   );
   console.log();
   console.log('For example:');
-  console.log(`  ${chalk.cyan(program.name())} ${chalk.green('my-styleguide-template')}`);
+  console.log(`  ${chalk.cyan(program.name())} ${chalk.green('my-styleguide')}`);
   console.log();
   console.log(
     `Run ${chalk.cyan(`${program.name()} --help`)} to see all options.`
