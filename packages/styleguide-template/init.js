@@ -90,7 +90,7 @@ module.exports = function(appPath, appName, originalDirectory) {
 
   if (fs.existsSync(dependenciesPath)) {
     const dependencies = require(dependenciesPath).dependencies;
-    const devDependencies = require(dependenciesPath).devDependencies;    
+    const devDependencies = require(dependenciesPath).devDependencies;
 
     if (typeof dependencies !== 'undefined') {
       let saveArgs = args;
@@ -113,13 +113,13 @@ module.exports = function(appPath, appName, originalDirectory) {
     if (typeof devDependencies !== 'undefined') {
       let saveDevArgs = args;
       saveDevArgs.push('--save-dev');
-    
+
       saveDevArgs = saveDevArgs.concat(
         Object.keys(devDependencies).map(key => {
           return `${key}@${devDependencies[key]}`;
         })
       );
-      
+
       console.log();
       console.log(`Installing ${chalk.cyan('styleguide-template')}'s devDependencies...`);
       const proc = spawn.sync(command, saveDevArgs, { stdio: 'inherit' });

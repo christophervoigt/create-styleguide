@@ -1,10 +1,10 @@
 # Ignore the app directory
 app/
 
-# Ignore Map Files
+# Ignore map files
 *.map
 
-# Ignore any node_modules folder
+# Ignore node_modules folder
 node_modules/
 
 # Ignore IDE folders
