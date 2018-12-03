@@ -4,17 +4,22 @@ const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
 const imagemin = require('imagemin');
-const log = require('../utils/logger');
+const imageminSvgo = require('imagemin-svgo');
+const log = require('../utils/log');
 
 const srcFolder = 'src';
 const distFolder = process.env.NODE_ENV === 'production' ? 'dist' : 'app';
-const excludePattern = process.env.NODE_ENV === 'production' ? /(fonts|styleguide)/ : /(fonts)/;
+const excludePattern = process.env.NODE_ENV === 'production' ? /(font|styleguide)/ : /(font)/;
 
 async function build(module) {
   const file = path.parse(module);
   const targetDir = file.dir.replace(srcFolder, distFolder);
 
-  await imagemin([module], targetDir);
+  if (file.ext === '.svg') {
+    await imagemin([module], targetDir, { use: [imageminSvgo()] });
+  } else {
+    await imagemin([module], targetDir);
+  }
 }
 
 function rebuild(event, module) {
@@ -34,9 +39,9 @@ function rebuild(event, module) {
 
 async function run() {
   await new Promise((imgResolve) => {
-    glob(`${srcFolder}/**/*{.jpg,.png,.svg,.ico}`, async (error, files) => {
+    glob(`${srcFolder}/**/*{.jpg,.png,.gif,.svg,.ico}`, async (error, files) => {
       if (error) {
-        log.error('javascript', error);
+        log.error('image', error);
       } else {
         const modules = files.filter(file => !excludePattern.test(file));
 

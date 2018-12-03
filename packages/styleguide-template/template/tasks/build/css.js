@@ -6,7 +6,7 @@ const glob = require('glob');
 const shell = require('shelljs');
 const sass = require('node-sass');
 const tildeImporter = require('node-sass-tilde-importer');
-const log = require('../utils/logger');
+const log = require('../utils/log');
 
 const srcFolder = 'src';
 const distFolder = process.env.NODE_ENV === 'production' ? 'dist' : 'app';

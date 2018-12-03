@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
 const shell = require('shelljs');
-const log = require('../utils/logger');
+const log = require('../utils/log');
 
 const srcFolder = 'src';
 const distFolder = process.env.NODE_ENV === 'production' ? 'dist' : 'app';
@@ -37,7 +37,7 @@ async function run() {
   await new Promise((staticResolve) => {
     glob(`${srcFolder}/**/*{.eot,.woff,.woff2,.ttf,.json}`, async (error, files) => {
       if (error) {
-        log.error('javascript', error);
+        log.error('static', error);
       } else {
         const modules = files.filter(file => !excludePattern.test(file));
 

@@ -6,7 +6,13 @@ const notifier = require('node-notifier');
 
 
 function format(time = 0) {
-  let timeString = `${time}ms`;
+  let timeString = '';
+
+  if (time < 1000) {
+    const milliseconds = parseInt(time, 0);
+
+    timeString = `${milliseconds}ms`;
+  }
 
   if (time >= 1000 && time < 60000) {
     const seconds = Math.floor(time / 1000);
@@ -45,7 +51,7 @@ module.exports.finish = finish;
 
 
 function error(task = 'task', err = {}) {
-  const message = err.formatted || err.message || 'no error message';
+  const message = err.formatted || err.message || err;
 
   console.log(
     `[${chalk.gray(new Date().toLocaleTimeString('de-DE'))}]`,

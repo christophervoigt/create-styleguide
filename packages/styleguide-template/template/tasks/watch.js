@@ -4,9 +4,11 @@
 
 const browserSync = require('browser-sync').create();
 const watch = require('node-watch');
-const logger = require('./utils/logger');
+const log = require('./utils/log');
+const { execute } = require('./utils/execute');
 
-const rebuildFONT = require('./build/font').rebuild;
+const rebuildICON = require('./build/icon').rebuild;
+const rebuildCOLOR = require('./build/color').rebuild;
 const rebuildHTML = require('./build/html').rebuild;
 const rebuildCSS = require('./build/css').rebuild;
 const rebuildJS = require('./build/javascript').rebuild;
@@ -15,28 +17,32 @@ const rebuildSTATIC = require('./build/static').rebuild;
 
 const srcFolder = 'src';
 const distFolder = 'app';
-const tasks = ['font', 'html', 'css', 'javascript', 'image', 'static'];
 
 function startBrowserSync() {
-  logger.start('Browsersync');
+  log.start('Browsersync');
 
   browserSync.init({
-    server: { baseDir: distFolder },
-    open: 'local',
+    server: {
+      baseDir: distFolder,
+    },
   });
 }
 
 function startWatchTask() {
   watch(srcFolder, { recursive: true }, async (event, name) => {
-    if (/\.font.json$/.test(name)) {
-      await rebuildFONT(event, name);
+    // ToDo: rebuild to switch statement?
+
+    if (/.font\.json$/.test(name)) {
+      await rebuildICON(event, name);
+    } else if (/.colors\.json/.test(name)) {
+      await rebuildCOLOR(event, name);
     } else if (/\.pug$/.test(name)) {
       await rebuildHTML(event, name);
     } else if (/\.scss$/.test(name)) {
       await rebuildCSS(event, name);
     } else if (/\.js$/.test(name)) {
       await rebuildJS(event, name);
-    } else if (/\.jpg$|\.png$|\.svg$|\.ico$/.test(name)) {
+    } else if (/\.jpg$|\.png$|\.gif$|\.svg$|\.ico$/.test(name)) {
       await rebuildIMG(event, name);
     } else if (/\.eot$|\.woff$|\.woff2$|\.ttf$|\.json$/.test(name)) {
       await rebuildSTATIC(event, name);
@@ -47,16 +53,10 @@ function startWatchTask() {
 }
 
 (async () => {
-  await Promise.all(tasks.map(async (task) => {
-    const startTime = new Date().getTime();
-    logger.start(task);
-
-    const { run } = require(`./build/${task}`);
-    await run();
-
-    const time = new Date().getTime() - startTime;
-    logger.finish(task, time);
-  }));
+  await (execute(
+    ['static', 'image', 'javascript', execute(['color', 'icon'], 'css')],
+    'html',
+  ))();
 
   startBrowserSync();
   startWatchTask();

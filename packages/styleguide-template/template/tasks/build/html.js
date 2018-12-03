@@ -7,7 +7,7 @@ const shell = require('shelljs');
 const pug = require('pug');
 const dependency = require('pug-dependency');
 const appRootPath = require('app-root-path');
-const log = require('../utils/logger');
+const log = require('../utils/log');
 
 const srcFolder = 'src';
 const distFolder = 'app';
