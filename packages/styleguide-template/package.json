@@ -27,7 +27,7 @@
   ],
   "dependencies": {
     "chalk": "2.4.0",
-    "cross-spawn": "6.0.5",
+    "cross-spawn": "6.0.6",
     "fs-extra": "5.0.0"
   }
 }
